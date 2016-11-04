@@ -122,15 +122,16 @@ File.open "#{SSH_DIR}/known_hosts", 'w' do |f|
 end
 FileUtils.chmod 0600, "#{SSH_DIR}/known_hosts"
 arrow "Wrote host hash to user's known hosts"
+  
+arrow "SSH config file: #{SSH_DIR}/config"
+arrow ""
+arrow "IdentityFile #{SSH_DIR}/id_rsa"
+arrow "host #{git_host}"
+arrow "     user #{git_user}"
+arrow "     IdentityFile #{SSH_DIR}/id_rsa"
+arrow ""
 
 File.open "#{SSH_DIR}/config", 'w' do |f|
-  arrow "SSH config file:"
-  arrow ""
-  arrow "IdentityFile #{SSH_DIR}/id_rsa"
-  arrow "host #{git_host}"
-  arrow "     user #{git_user}"
-  arrow "     IdentityFile #{SSH_DIR}/id_rsa"
-  arrow ""
   f.puts "IdentityFile #{SSH_DIR}/id_rsa"
   f.puts "host #{git_host}"
   f.puts "     user #{git_user}"
